@@ -1,0 +1,84 @@
+{
+  "items": [
+    { "id": 1, "name": "brownish Jacket", "price": "$120.00", "image": "/assets/tops/1-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 2, "name": "casual Jacket", "price": "$80.00", "image": "/assets/tops/2-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 3, "name": "green Skirt", "price": "$120.00", "image": "/assets/tops/3-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 4, "name": "wow half-boat", "price": "$80.00", "image": "/assets/tops/4-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 12, "name": "casual Jacket", "price": "$80.00", "image": "/assets/bags/42-removebg-preview.png" , "description": "Description of Item 1"},
+    { "id": 13, "name": "green Skirt", "price": "$120.00", "image": "/assets/bags/43-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 14, "name": "wow half-boat", "price": "$80.00", "image": "/assets/bags/44-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 24, "name": "wow half-boat", "price": "$80.00", "image": "/assets/pants/14-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 25, "name": "Burgundy bag", "price": "$120.00", "image": "/assets/pants/15-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 26, "name": "Elegant Blouse", "price": "$80.00", "image": "/assets/pants/16-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 46, "name": "Elegant Blouse", "price": "$80.00", "image": "/assets/skirts/26-removebg-preview.png" , "description": "Description of Item 1"},
+    { "id": 47, "name": "Elegant Jacket", "price": "$120.00", "image": "/assets/skirts/27-removebg-preview.png", "description": "Description of Item 1" }
+
+
+  ],
+  "bestSelling": [
+    { "id": 3, "name": "green Skirt", "price": "$120.00", "image": "/assets/tops/3-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 14, "name": "wow half-boat", "price": "$80.00", "image": "/assets/bags/44-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 23, "name": "green Skirt", "price": "$120.00", "image": "/assets/pants/13-removebg-preview.png" , "description": "Description of Item 1"},
+    { "id": 40, "name": "Elegant bag", "price": "$80.00", "image": "/assets/shoes/40-removebg-preview.png", "description": "Description of Item 1" }
+  ],
+  "tops": [
+    { "id": 1, "name": "brownish Jacket", "price": "$120.00", "image": "/assets/tops/1-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 2, "name": "casual Jacket", "price": "$80.00", "image": "/assets/tops/2-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 3, "name": "green Skirt", "price": "$120.00", "image": "/assets/tops/3-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 4, "name": "wow half-boat", "price": "$80.00", "image": "/assets/tops/4-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 5, "name": "Burgundy bag", "price": "$120.00", "image": "/assets/tops/5-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 6, "name": "Elegant Blouse", "price": "$80.00", "image": "/assets/tops/6-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 7, "name": "Elegant Jacket", "price": "$120.00", "image": "/assets/tops/7-removebg-preview.png" , "description": "Description of Item 1"},
+    { "id": 8, "name": "Hot Jeans", "price": "$80.00", "image": "/assets/tops/8-removebg-preview.png" , "description": "Description of Item 1"},
+    { "id": 9, "name": "Havan shoes", "price": "$120.00", "image": "/assets/tops/9-removebg-preview.png" , "description": "Description of Item 1"},
+    { "id": 10, "name": "Elegant bag", "price": "$80.00", "image": "/assets/tops/10-removebg-preview.png" , "description": "Description of Item 1"}
+  ],
+  "bags": [
+    { "id": 11, "name": "brownish Jacket", "price": "$120.00", "image": "/assets/bags/41-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 12, "name": "casual Jacket", "price": "$80.00", "image": "/assets/bags/42-removebg-preview.png" , "description": "Description of Item 1"},
+    { "id": 13, "name": "green Skirt", "price": "$120.00", "image": "/assets/bags/43-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 14, "name": "wow half-boat", "price": "$80.00", "image": "/assets/bags/44-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 15, "name": "Burgundy bag", "price": "$120.00", "image": "/assets/bags/45-removebg-preview.png" , "description": "Description of Item 1"},
+    { "id": 16, "name": "Elegant Blouse", "price": "$80.00", "image": "/assets/bags/46-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 17, "name": "Elegant Jacket", "price": "$120.00", "image": "/assets/bags/47-removebg-preview.png" , "description": "Description of Item 1"},
+    { "id": 18, "name": "Hot Jeans", "price": "$80.00", "image": "/assets/bags/48-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 19, "name": "Havan shoes", "price": "$120.00", "image": "/assets/bags/49-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 20, "name": "Elegant bag", "price": "$80.00", "image": "/assets/bags/50-removebg-preview.png", "description": "Description of Item 1" }
+  ],
+  "pants": [
+    { "id": 21, "name": "brownish Jacket", "price": "$120.00", "image": "/assets/pants/11-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 22, "name": "casual Jacket", "price": "$80.00", "image": "/assets/pants/12-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 23, "name": "green Skirt", "price": "$120.00", "image": "/assets/pants/13-removebg-preview.png" , "description": "Description of Item 1"},
+    { "id": 24, "name": "wow half-boat", "price": "$80.00", "image": "/assets/pants/14-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 25, "name": "Burgundy bag", "price": "$120.00", "image": "/assets/pants/15-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 26, "name": "Elegant Blouse", "price": "$80.00", "image": "/assets/pants/16-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 27, "name": "Elegant Jacket", "price": "$120.00", "image": "/assets/pants/17-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 28, "name": "Hot Jeans", "price": "$80.00", "image": "/assets/pants/18-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 29, "name": "Havan shoes", "price": "$120.00", "image": "/assets/pants/19-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 30, "name": "Elegant bag", "price": "$80.00", "image": "/assets/pants/20-removebg-preview.png", "description": "Description of Item 1" }
+  ],
+  "shoes": [
+    { "id": 31, "name": "brownish Jacket", "price": "$120.00", "image": "/assets/shoes/31-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 32, "name": "casual Jacket", "price": "$80.00", "image": "/assets/shoes/32-removebg-preview.png" , "description": "Description of Item 1"},
+    { "id": 33, "name": "green Skirt", "price": "$120.00", "image": "/assets/shoes/33-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 34, "name": "wow half-boat", "price": "$80.00", "image": "/assets/shoes/34-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 35, "name": "Burgundy bag", "price": "$120.00", "image": "/assets/shoes/35-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 36, "name": "Elegant Blouse", "price": "$80.00", "image": "/assets/shoes/36-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 37, "name": "Elegant Jacket", "price": "$120.00", "image": "/assets/shoes/37-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 38, "name": "Hot Jeans", "price": "$80.00", "image": "/assets/shoes/38-removebg-preview.png" , "description": "Description of Item 1"},
+    { "id": 39, "name": "Havan shoes", "price": "$120.00", "image": "/assets/shoes/39-removebg-preview.png" , "description": "Description of Item 1"},
+    { "id": 40, "name": "Elegant bag", "price": "$80.00", "image": "/assets/shoes/40-removebg-preview.png", "description": "Description of Item 1" }
+  ],
+  "skirts": [
+    { "id": 41, "name": "brownish Jacket", "price": "$120.00", "image": "/assets/skirts/21-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 42, "name": "casual Jacket", "price": "$80.00", "image": "/assets/skirts/22-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 43, "name": "green Skirt", "price": "$120.00", "image": "/assets/skirts/23-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 44, "name": "wow half-boat", "price": "$80.00", "image": "/assets/skirts/24-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 45, "name": "Burgundy bag", "price": "$120.00", "image": "/assets/skirts/25-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 46, "name": "Elegant Blouse", "price": "$80.00", "image": "/assets/skirts/26-removebg-preview.png" , "description": "Description of Item 1"},
+    { "id": 47, "name": "Elegant Jacket", "price": "$120.00", "image": "/assets/skirts/27-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 48, "name": "Hot Jeans", "price": "$80.00", "image": "/assets/skirts/28-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 49, "name": "Havan shoes", "price": "$120.00", "image": "/assets/skirts/29-removebg-preview.png", "description": "Description of Item 1" },
+    { "id": 50, "name": "Elegant bag", "price": "$80.00", "image": "/assets/skirts/30-removebg-preview.png", "description": "Description of Item 1" }
+  ]
+}
