@@ -1,0 +1,99 @@
+/* Ensure html and body take full height */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif; /* Clean and modern font */
+    background-color: rgb(177, 157, 140); /* Light background for better contrast */
+}
+
+/* Profile Page Styling */
+.profile-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    background: linear-gradient(to bottom right,  rgb(177, 157, 140), #ebedee); /* Subtle gradient for sophistication */
+    box-sizing: border-box;
+}
+
+/* Logo Styling */
+.pro-logo {
+    width: 100%;
+    max-width: 250px;
+    margin-bottom: 20px;
+    margin-top: 3%;
+   
+   
+}
+
+/* Profile Info Box */
+.profile-info {
+    width: 100%;
+    max-width: 600px;
+    background-color:  rgb(177, 157, 140); /* Clean white background */
+    padding: 20px;
+    border-radius: 15px; /* Smooth rounding for elegance */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Elevated shadow for a card-like look */
+    margin-bottom: 20px;
+}
+
+/* Profile Item Styling */
+.profile-item {
+    margin: 15px 0;
+    font-size: 1.1rem;
+    color: #333; /* Dark text for readability */
+    font-weight: 500; /* Slightly bold text */
+}
+
+/* Button Styling */
+.edit-profile-button, .logout-button {
+    padding: 12px 25px;
+    font-size: 1rem;
+    margin: 10px;
+    border: none;
+    border-radius: 30px; /* Rounded buttons */
+    cursor: pointer;
+    transition: all 0.3s ease; /* Smooth transitions */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    text-transform: uppercase; /* Bold button text */
+    letter-spacing: 1px; /* Slight spacing for elegance */
+}
+
+/* Edit Profile Button */
+.edit-profile-button {
+    background-color: #333; /* Vibrant modern color */
+    color: white;
+}
+
+.edit-profile-button:hover {
+    background-color:  #574a40; /* Darker shade on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Elevated shadow on hover */
+}
+
+/* Logout Button */
+.logout-button {
+    background-color: #333; /* Attention-grabbing red */
+    color: white;
+}
+
+.logout-button:hover {
+    background-color:  #574a40; /* Darker shade on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Elevated shadow on hover */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .profile-info {
+        max-width: 90%;
+        padding: 15px;
+    }
+
+    .edit-profile-button, .logout-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,95 @@
+/* Landing Page Container */
+.landing-container {
+  height: 100vh;
+  background-image: url('../bgg.jpg');
+  /* Ensure the path to your image is correct */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Centers the content vertically */
+  color: white;
+  position: relative;
+}
+
+/* Header Section */
+.landing-header {
+  width: 100%;
+  background-color: rgba(159, 157, 157, 0.4); 
+  padding: 10px;
+  height: 20%;
+  text-align: center;
+  position: absolute; /* Keep the header fixed at the top */
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.logo {
+  height: 170px; 
+  margin-bottom: 10px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* Links Section with Blur Background */
+.link-container {
+  background: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+  backdrop-filter: blur(10px); /* Add blur effect */
+  border-radius: 15px; /* Rounded corners */
+  padding: 30px 40px; /* Space inside the container */
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Optional shadow for better visibility */
+  display: flex; /* Flexbox container */
+  flex-direction: column; /* Align children vertically */
+  gap: 20px; /* Space between the links */
+  align-items: center; /* Center links horizontally */
+}
+
+/* Links Style */
+.landing-link {
+  padding: 15px 15px;
+  color: rgb(6, 6, 6);
+  text-decoration: underline;
+  font-size: 20px;
+  transition: background-color 0.3s;
+  margin: 0; /* Remove default margins if any */
+}
+
+.landing-link:hover {
+  background-color: rgba(0, 0, 0, 0.5); /* Add hover effect */
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+  .logo {
+    height: 120px; /* Adjust logo size for smaller screens */
+  }
+
+  .landing-link {
+    font-size: 18px; /* Smaller font size for links on medium screens */
+    padding: 12px 12px; /* Adjust padding for a more compact design */
+  }
+
+  .link-container {
+    padding: 25px 30px; /* Adjust padding */
+    width: 80%; /* Limit width on medium screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    height: 100px; /* Even smaller logo on mobile screens */
+  }
+
+  .landing-link {
+    font-size: 16px; /* Smaller font size for links on small screens */
+    padding: 10px 10px; /* Reduced padding */
+  }
+
+  .link-container {
+    padding: 20px 20px; /* Further reduce padding */
+    width: 90%; /* Maximize container width on small screens */
+  }
+}

@@ -1,0 +1,42 @@
+footer {
+    margin-top: auto; /* Pushes the footer to the bottom */
+    background-color: #533737;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+  }
+  
+  .about-us-section {
+    padding: 20px;
+  }
+  
+  .social-icons a {
+    margin: 0 10px;
+    color: #e9f0f3;
+    font-size: 24px;
+  }
+  
+  .social-icons a:hover {
+    color: #fb8500;
+  }
+  
+  .social-icon {
+    transition: color 0.3s ease;
+  }
+
+  .about{
+    font-size: 35px;
+    color: #ccc;
+    font-weight: bold;
+  }
+
+  .dd{
+    font-size: 25px;
+    color: #ccc;
+ 
+  }
+
+  .contact{
+    font-size: 25px;
+    color: #ccc;
+  }

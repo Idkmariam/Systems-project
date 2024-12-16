@@ -1,0 +1,95 @@
+/* category.css */
+.category-container {
+   margin-top: 5%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+  background: linear-gradient(to bottom right,  rgb(177, 157, 140), #ebedee);
+  }
+  
+  h1 {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 25px;
+    color: #292121;
+  }
+  
+  p {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 20px;
+    color: #292121;
+  }
+  
+  .our-products {
+    flex: 1;
+    width: 60%; /* Adjust the width to fit the screen */
+    margin-top: 30px; /* Space between the title and products */
+    max-height: 40%;
+    margin-bottom: 35%;
+  }
+  
+  .items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 items per row */
+    gap: 4%; /* Space between items */
+    width: 100%; /* Full width of the container */
+    padding-bottom: 50px; /* Add some padding at the bottom */
+  }
+  
+  .itemm {
+    background-color: rgb(177, 157, 140);
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column; /* Stack image and content vertically */
+    height: 100%; /* Ensure each item takes the full available height */
+    border: 1px solid #ddd; /* Add a border for better isolation */
+    margin-bottom: 20px; /* Margin between items */
+  }
+  
+  .item-image {
+    width: 80%;
+    margin: 0 auto;
+    height: auto;
+    border-radius: 8px;
+    object-fit: contain;
+  }
+  
+  .cont {
+    display: flex;
+    flex-direction: column; /* Stack name, price, and button vertically */
+    justify-content: flex-end; /* Push the content to the bottom */
+    flex-grow: 1; /* Make the container grow to fill available space */
+  }
+  
+  .item-name {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 10px 0;
+  }
+  
+  .item-price {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 3%;
+  }
+  
+  .add-to-cart-btn {
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+ .foot{
+  margin-top: 5%;
+ }
+
+ 
