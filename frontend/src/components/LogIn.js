@@ -1,48 +1,43 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./Login.css";
-const logoImage = "/assets/logoo.png";  // Make sure the path is correct
+import axiosInstance from "../utils/axiosInstance";
+
+
+const logoImage = "/assets/logoo.png";  
 
 const Login = () => {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value); 
   };
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
 
-  const validateForm = () => {
-    if (!email || !password) {
-      setError("Both email and password are required.");
-      return false;
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      setError("Please enter a valid email address.");
-      return false;
-    }
-
-    if (password.length < 6) {
-      setError("Password must be at least 6 characters long.");
-      return false;
-    }
-
-    return true;
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (validateForm()) {
-      console.log("Logging in with", email, password);
+  
+    try {
+      const response = await axiosInstance.post("/auth/login", {
+        username,
+        password,
+      });
+      
+  
+      console.log(response.data);
+      localStorage.setItem("token", response.data.accesstoken);
+      console.log("Token saved, navigating to home...");
       navigate("/home");
+  
+    } catch (err) {
+      console.error("Login error:", err);
+      setError(err.response?.data || "Login failed. Please try again.");
     }
   };
 
@@ -54,12 +49,12 @@ const Login = () => {
         
         <form onSubmit={handleSubmit}>
           <input
-            type="email"
-            name="email"
-            value={email}
-            placeholder="Enter your email"
+            type="text"
+            name="username"
+            value={username}
+            placeholder="Enter your username"
             className="login-input"
-            onChange={handleEmailChange}
+            onChange={handleUsernameChange}
           />
           <input
             type="password"

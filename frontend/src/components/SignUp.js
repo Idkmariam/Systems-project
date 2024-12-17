@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SignUp.css";
+import axiosInstance from "../utils/axiosInstance";
+
 const logoImage = "/assets/logoo.png";
 
 const SignUp = () => {
@@ -11,44 +13,44 @@ const SignUp = () => {
     phone: "",
   });
 
-  const [errors, setErrors] = useState({}); // State for error messages
-
+  const [errors, setErrors] = useState({}); 
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-    setErrors({ ...errors, [name]: "" }); // Clear error when user types
+    setErrors({ ...errors, [name]: "" }); 
   };
 
-  const validateForm = () => {
-    const newErrors = {};
-    const { name, email, password, phone } = formData;
-
-    if (!name) newErrors.name = "Name is required.";
-    if (!email) {
-      newErrors.email = "Email is required.";
-    } else if (!/\S+@\S+\.\S+/.test(email)) {
-      newErrors.email = "Please enter a valid email address.";
-    }
-
-    if (!password) newErrors.password = "Password is required.";
-    if (!phone) newErrors.phone = "Phone number is required.";
-
-    return newErrors;
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const formErrors = validateForm();
-
-    if (Object.keys(formErrors).length > 0) {
-      setErrors(formErrors); // Set errors if validation fails
-    } else {
-      console.log("Form Submitted", formData);
-      navigate("/login"); // Navigate on successful submission
+  
+    try {
+      const response = await axiosInstance.post("/auth/register", {
+        username: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        password: formData.password,
+      });
+  
+      console.log("User registered:", response.data);
+      navigate("/login");
+    } catch (err) {
+      if (err.response?.status === 400) {
+        
+        
+        const backendErrors = {};
+        err.response.data.errors.forEach((error) => {
+          backendErrors[error.param] = error.msg;
+        });
+        setErrors(backendErrors);
+      } else {
+        setErrors({ apiError: "An unexpected error occurred." });
+      }
     }
   };
+
+  
 
   return (
     <div className="signup-container">
@@ -104,6 +106,8 @@ const SignUp = () => {
             />
             {errors.phone && <span className="error-message">{errors.phone}</span>}
           </div>
+
+          {errors.apiError && <div className="error-message">{errors.apiError}</div>}
 
           <button type="submit" className="signup-button">
             Sign Up
