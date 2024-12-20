@@ -1,81 +1,101 @@
-import React,{useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import './profile.css';
 import Navbar from './navbar';
 import Modal from './modal';
+
+import axiosInstance from "../utils/axiosInstance";
 const logoImage = "/assets/logoo.png"; 
 
-
 const ProfilePage = () => {
-  const [userData, setUserData] = useState({
-    name: 'John Doe',
-    email: 'johndoe@example.com',
-    phone: '+1234567890',
-    address: '123 Main Street, Anytown, USA',
-  });
-
-  useEffect(() => {
-    const storedData = JSON.parse(localStorage.getItem('userData'));
-    if (storedData) {
-      setUserData(storedData);
-    }
-  }, []);
-
+  const [userData, setUserData] = useState(null);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true); 
+  const [error, setError] = useState('');
+  
+
+  useEffect(() => {
+    const userId = localStorage.getItem("userId");
+    const authToken = localStorage.getItem("authToken");
+
+    const fetchUserData = async () => {
+      try {
+        const response = await axiosInstance.get(`/api/profileupdate/${userId}`, {
+          headers: {
+            token: `Bearer ${authToken}`,
+          },
+        });
+        setUserData(response.data); 
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+        setError('Failed to load profile data.');
+      } finally {
+        setIsLoading(false); 
+      }
+    };
+
+    fetchUserData();
+  }, []); 
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   const handleEditProfile = () => {
-    setIsEditModalOpen(true); // Open the edit profile modal
+    setIsEditModalOpen(true);
   };
 
   const handleLogout = () => {
-    setIsLogoutModalOpen(true); // Open the logout modal
+    setIsLogoutModalOpen(true);
   };
 
   const handleConfirmEdit = () => {
-    setIsEditModalOpen(false); // Close the modal
-    window.location.href = '/edit-profile'; // Proceed to the edit profile page
+    setIsEditModalOpen(false);
+    window.location.href = '/edit-profile';
   };
 
   const handleCancelEdit = () => {
-    setIsEditModalOpen(false); // Close the modal
+    setIsEditModalOpen(false);
   };
 
   const handleConfirmLogout = () => {
-    setIsLogoutModalOpen(false); // Close the modal
-    localStorage.removeItem('authToken'); // Log out logic
-    window.location.href = '/login'; // Redirect to login page
+    setIsLogoutModalOpen(false);
+    localStorage.removeItem('authToken');
+    window.location.href = '/login'; 
   };
 
   const handleCancelLogout = () => {
-    setIsLogoutModalOpen(false); // Close the modal
+    setIsLogoutModalOpen(false);
   };
-  
-  
-  
 
   return (
     <div className="profile-page">
-        <Navbar />
-        <img src={logoImage} alt="Logo" className="pro-logo" />
-     
-      <div className="profile-info">
-        <div className="profile-item">
-          <strong>Name:</strong> {userData.name}
+      <Navbar />
+      <img src={logoImage} alt="Logo" className="pro-logo" />
+
+      {userData && (
+        <div className="profile-info">
+          <div className="profile-item">
+            <strong>Name:</strong> {userData.name}
+          </div>
+          <div className="profile-item">
+            <strong>Email:</strong> {userData.email}
+          </div>
+          <div className="profile-item">
+            <strong>Phone:</strong> {userData.phone}
+          </div>
+          <div className="profile-item">
+            <strong>Address:</strong> {userData.address}
+          </div>
         </div>
-        <div className="profile-item">
-          <strong>Email:</strong> {userData.email}
-        </div>
-        <div className="profile-item">
-          <strong>Phone:</strong> {userData.phone}
-        </div>
-        <div className="profile-item">
-          <strong>Address:</strong> {userData.address}
-        </div>
-      </div>
+      )}
+
       <button className="edit-profile-button" onClick={handleEditProfile}>Edit Profile</button>
       <button className="logout-button" onClick={handleLogout}>Log Out</button>
 
-      {/* Modal for Edit Profile Confirmation */}
       {isEditModalOpen && (
         <Modal 
           message="Do you want to edit your profile?" 

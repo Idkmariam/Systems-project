@@ -34,11 +34,17 @@ const SignUp = () => {
       });
   
       console.log("User registered:", response.data);
-      navigate("/login");
+  
+      // Save user data to localStorage
+      localStorage.setItem("userId", response.data.userId);
+      localStorage.setItem("authToken", response.data.token);
+      localStorage.setItem("userData", JSON.stringify(response.data.user));
+  
+      // Navigate to login page and pass the email (or any other data)
+      navigate("/login", { state: { email: formData.email } });
+  
     } catch (err) {
       if (err.response?.status === 400) {
-        
-        
         const backendErrors = {};
         err.response.data.errors.forEach((error) => {
           backendErrors[error.param] = error.msg;
@@ -49,6 +55,7 @@ const SignUp = () => {
       }
     }
   };
+  
 
   
 

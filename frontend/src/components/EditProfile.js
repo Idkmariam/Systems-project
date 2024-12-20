@@ -1,25 +1,42 @@
-import React, { useState,useEffect } from 'react';
-import './edit-profile.css';
-
-const logoImage = "/assets/logoo.png"; 
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axiosInstance from "../utils/axiosInstance"; // Your axios instance
 
 const EditProfile = () => {
   const [userData, setUserData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    address: '',
+    name: "",
+    email: "",
+    phone: "",
   });
+  const [loading, setLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
 
-  const [showModal, setShowModal] = useState(false);
-
-  // Load user data from localStorage or set default values
   useEffect(() => {
-    const storedData = JSON.parse(localStorage.getItem('userData'));
-    if (storedData) {
-      setUserData(storedData);
+    const userId = localStorage.getItem("userId");
+    const authToken = localStorage.getItem("authToken");
+
+    if (!userId || !authToken) {
+      navigate("/login"); // Redirect to login if user is not authenticated
+    } else {
+      const fetchUserData = async () => {
+        try {
+          const response = await axiosInstance.get(`/api/profileupdate/${userId}`, {
+            headers: {
+              Authorization: `Bearer ${authToken}`,
+            },
+          });
+          setUserData(response.data); // Populate form with user data
+        } catch (error) {
+          console.error("Error fetching user data:", error);
+          setErrorMessage("Failed to load user data.");
+        } finally {
+          setLoading(false);
+        }
+      };
+      fetchUserData();
     }
-  }, []);
+  }, [navigate]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,21 +46,37 @@ const EditProfile = () => {
     }));
   };
 
-  const handleSaveChanges = () => {
-    // Save the changes to localStorage
-    localStorage.setItem('userData', JSON.stringify(userData));
-    setShowModal(true);
+  const handleSaveChanges = async () => {
+    try {
+      const userId = localStorage.getItem("userId");
+      const authToken = localStorage.getItem("authToken");
+
+      const response = await axiosInstance.put(`/api/profileupdate/${userId}`, userData, {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+      });
+
+      setUserData(response.data);
+      alert("Profile updated successfully!");
+    } catch (error) {
+      console.error("Error updating profile:", error);
+      alert("Failed to update profile.");
+    }
   };
 
-  const handleCloseModal = () => {
-    setShowModal(false);
-    window.location.href = '/profile'; // Navigate back to the Profile page after closing the modal
-  };
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (errorMessage) {
+    return <div>{errorMessage}</div>;
+  }
+
   return (
-    <div className="edit-profile-page">
-        <img src={logoImage} alt="Logo" className="edit-logo" />
-      
-        <div className="form-group">
+    <div className="edit-profile">
+      <h2>Edit Profile</h2>
+      <div>
         <label>Name:</label>
         <input
           type="text"
@@ -52,7 +85,7 @@ const EditProfile = () => {
           onChange={handleChange}
         />
       </div>
-      <div className="form-group">
+      <div>
         <label>Email:</label>
         <input
           type="email"
@@ -61,7 +94,7 @@ const EditProfile = () => {
           onChange={handleChange}
         />
       </div>
-      <div className="form-group">
+      <div>
         <label>Phone:</label>
         <input
           type="text"
@@ -70,24 +103,7 @@ const EditProfile = () => {
           onChange={handleChange}
         />
       </div>
-      <div className="form-group">
-        <label>Address:</label>
-        <input
-          type="text"
-          name="address"
-          value={userData.address}
-          onChange={handleChange}
-        />
-      </div>
-      <button onClick={handleSaveChanges} className='submit'>Save Changes</button>
-      {showModal && (
-        <div className="modal-overlay">
-          <div className="modal-content">
-            <p>Profile updated successfully!</p>
-            <button onClick={handleCloseModal}>Close</button>
-          </div>
-        </div>
-      )}
+      <button onClick={handleSaveChanges}>Save Changes</button>
     </div>
   );
 };
