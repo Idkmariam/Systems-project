@@ -22,6 +22,11 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!username || !password) {
+      setError("Both username and password are required.");
+      return;
+    }
   
     try {
       const response = await axiosInstance.post("/auth/login", {
@@ -29,15 +34,26 @@ const Login = () => {
         password,
       });
       
-  
-      console.log(response.data);
-      localStorage.setItem("token", response.data.accesstoken);
-      console.log("Token saved, navigating to home...");
+      localStorage.setItem("userId", response.data.userId);
+      localStorage.setItem("authToken", response.data.token);
+      localStorage.setItem("userData", JSON.stringify(response.data.user));
+
       navigate("/home");
+      
+      //console.log(response.data);
+
+     
+      //localStorage.setItem("token", response.data.accesstoken);
+
+      
+     
   
     } catch (err) {
-      console.error("Login error:", err);
-      setError(err.response?.data || "Login failed. Please try again.");
+      const errorMessage =
+        err.response?.status === 401
+          ? "Invalid username or password."
+          : "An error occurred. Please try again later.";
+      setError(errorMessage);
     }
   };
 

@@ -17,25 +17,33 @@ const ProfilePage = () => {
   useEffect(() => {
     const userId = localStorage.getItem("userId");
     const authToken = localStorage.getItem("authToken");
-
+    //const userData = localStorage.getItem("userData");
+  
+    if (!userId) {
+      setError("User ID is missing. Please log in again.");
+      setIsLoading(false);
+      return;
+    }
+  
     const fetchUserData = async () => {
       try {
-        const response = await axiosInstance.get(`/api/profileupdate/${userId}`, {
+        const response = await axiosInstance.get(`/users/find/${userId}`, {
           headers: {
             token: `Bearer ${authToken}`,
           },
         });
-        setUserData(response.data); 
+        setUserData(response.data);
       } catch (error) {
         console.error("Error fetching user data:", error);
         setError('Failed to load profile data.');
       } finally {
-        setIsLoading(false); 
+        setIsLoading(false);
       }
     };
-
+  
     fetchUserData();
-  }, []); 
+  }, []);
+  
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -79,7 +87,7 @@ const ProfilePage = () => {
       {userData && (
         <div className="profile-info">
           <div className="profile-item">
-            <strong>Name:</strong> {userData.name}
+            <strong>Name:</strong> {userData.username}
           </div>
           <div className="profile-item">
             <strong>Email:</strong> {userData.email}
