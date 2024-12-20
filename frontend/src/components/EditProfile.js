@@ -97,7 +97,7 @@ const EditProfile = () => {
         <input
           type="text"
           name="name"
-          value={userData.username}
+          value={userData.name}
           onChange={handleChange}
           placeholder="Enter your name"
         />
