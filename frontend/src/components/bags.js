@@ -3,6 +3,7 @@ import './category.css';
 import Navbar from "./navbar";
 import Footer from './footer';
 import { useCart } from './CartContext';
+import Reviews from './Reviews';
 
 const Bags = () => {
     const [bags, setBags] = useState([]);
@@ -71,6 +72,7 @@ const Bags = () => {
                             {clickedItem && clickedItem.id === product.id && (
                                 <p className="item-description">{product.description}</p>
                             )}
+                            <Reviews productId={product.id} />
                         </div>
                     ))}
                 </div>

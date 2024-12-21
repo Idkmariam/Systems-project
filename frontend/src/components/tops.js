@@ -3,6 +3,7 @@ import './category.css';
 import Navbar from "./navbar";
 import Footer from './footer';
 import { useCart } from './CartContext';
+import Reviews from './Reviews';
 
 
 
@@ -80,8 +81,10 @@ const Tops = () => {
                             {clickedItem && clickedItem.id === product.id && (
                                 <p className="item-description">{product.description}</p>
                             )}
+                            <Reviews productId={product.id} />
                         </div>
                     ))}
+                    
                 </div>
             </div>
             <div className="foot">
