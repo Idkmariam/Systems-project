@@ -62,12 +62,50 @@ const CartProvider = ({ children }) => {
   // Function to clear the entire cart
   const clearCart = () => {
     setCartItems([]);
+    localStorage.removeItem('cartItems'); // Clear cart data from localStorage
+  };
+
+  // Function to handle checkout
+  const checkoutCart = async () => {
+    if (cartItems.length === 0) {
+      alert("Your cart is empty!");
+      return false; // Return false if checkout fails
+    }
+
+    try {
+      // Simulate sending cart data to a server (you can replace this with your actual API call)
+      const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ cartItems }),
+      });
+
+      if (response.ok) {
+        alert("Checkout successful!");
+        clearCart(); // Clear the cart after successful checkout
+        return true; // Return true if checkout succeeds
+      } else {
+        alert("Checkout failed. Please try again.");
+        return false; // Return false if checkout fails
+      }
+    } catch (error) {
+      console.error("Error during checkout:", error);
+      alert("An error occurred during checkout. Please try again.");
+      return false; // Return false if checkout fails
+    }
   };
 
   // Return the provider with context values
   return (
     <CartContext.Provider
-      value={{ cartItems, addItemToCart, removeItemFromCart, updateItemQuantity, clearCart }}
+      value={{
+        cartItems,
+        addItemToCart,
+        removeItemFromCart,
+        updateItemQuantity,
+        clearCart,
+        checkoutCart, // Provide checkoutCart function
+      }}
     >
       {children}
     </CartContext.Provider>
